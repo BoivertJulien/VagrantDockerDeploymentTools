@@ -2,9 +2,9 @@
 
 echo "##### COMMAND TO REMOVE VM #####"
 echo "vagrant halt"
-echo "vagrant destroy"
+echo "vagrant destroy -f"
 echo "rm -r .vagrant/"
-echo "rmdir .vagrant"
-echo "cd <directory_containing_VirtualBox\\ VM>"
+echo "cd .."
+echo "rm -r <box_dir>"
+echo "cd <directory_containing_VirtualBox\\ VMs>"
 echo "rm -r <box_to_remove>/"
-echo "rmdir <box_to_remove>"

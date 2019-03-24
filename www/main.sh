@@ -15,7 +15,7 @@ privateIP=192.168.2.23
 forwardedGuestPort=80
 forwardedHostPort=1996
 hostname=www
-dockerScript=dockerInstaller.sh
+dockerScript=AUTOEXEC_dockerInstaller.sh
 scriptsDir=scripts
 
 echo "Parameters are :"
@@ -40,9 +40,9 @@ echo "  config.vm.network \"private_network\", ip:\"$privateIP\"" >> Vagrantfile
 echo "  config.vm.network \"forwarded_port\", guest: $forwardedGuestPort, host: $forwardedHostPort" >> Vagrantfile
 echo "  config.vm.hostname = \"$hostname\""		>> Vagrantfile
 echo ""							>> Vagrantfile
-echo "  config.vm.provision \"file\", source: \"$scriptsDir\", destination:\"$scriptsDir\"" >> Vagrantfile
+echo "  config.vm.provision \"file\", source: \"$scriptsDir\", destination:\"~/\"" >> Vagrantfile
 echo "  config.vm.provision \"shell\", inline: <<-SHELL" >> Vagrantfile
-echo "    cd $scriptsDir"
+echo "    cd ~/"
 echo "    ./$dockerScript"				>> Vagrantfile
 echo "  SHELL"						>> Vagrantfile
 echo "end" 						>> Vagrantfile
