@@ -10,4 +10,4 @@ docker run \
 	--publish 2004:80 \
 	--restart always \
 	--hostname gitlab.boivert.ovh \
-	gitlab/gitlab-ce:stable
+	gitlab/gitlab-ce:latest
