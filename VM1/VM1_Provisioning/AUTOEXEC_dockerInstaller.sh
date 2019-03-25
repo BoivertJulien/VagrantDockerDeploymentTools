@@ -1,4 +1,6 @@
 #!/bin/bash
+su - vagrant
+whoami
 sudo apt update
 
 ### Docker Install
@@ -10,7 +12,8 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 ### Add default user to docker group
-sudo gpasswd -a ${USER} docker
+# sudo gpasswd -a ${USER} docker
+sudo gpasswd -a vagrant docker
 
 ### Pull used images
 docker pull nginx:stable
