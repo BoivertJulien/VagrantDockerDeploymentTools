@@ -1,3 +1,3 @@
 #!/bin/bash
-docker stop nginx
-docker rm nginx
+docker stop gitlab
+docker rm gitlab
