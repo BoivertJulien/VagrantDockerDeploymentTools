@@ -29,7 +29,6 @@ cd ../VM1
 
 echo "Moved to \"VM1/\" and now making \"vagrant up\""
 vagrant up
-echo "VM1 installation results :"
 if [ $? -eq 0 ] ; then
   echo "It seems to worked ! (Be aware because host forwarded port < 1024 need to be root)"
 else
@@ -39,7 +38,6 @@ fi
 cd ../VM2
 echo "Moved to \"../VM2/\" and now making \"vagrant up\""
 vagrant up
-echo "VM2 installation results :"
 if [ $? -eq 0 ] ; then
   echo "It seems to worked ! (Be aware because host forwarded port < 1024 need to be root)"
 else
