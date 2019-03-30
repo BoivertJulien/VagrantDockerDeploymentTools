@@ -5,13 +5,9 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 1996
   # config.vm.network "forwarded_port", guest: 2004, host: 2004
   config.vm.hostname = "VM1"
-  config.vm.provision "file", source: "./VM1_Provisioning", destination:"~/home/vagrant"
+  config.vm.provision "file", source: "Provision", destination:"/home/vagrant/"
   config.vm.provision "shell", inline: <<-SHELL
-	pwd 
-	ls
-	cd /home/vagrant/
-	pwd
-	ls
+	  cd /home/vagrant/Provision
     ./AUTOEXEC_dockerInstaller.sh
   SHELL
 end

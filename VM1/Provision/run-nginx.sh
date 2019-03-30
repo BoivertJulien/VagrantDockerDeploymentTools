@@ -4,9 +4,8 @@
 docker run \
 	--name nginx \
 	--detach \
-	--volume ~/nginx-shared/html:/usr/share/nginx/html \
-	--volume ~/nginx-shared/conf.d:/etc/nginx/conf.d \
+	--volume ~/Provision/nginx-shared/html:/usr/share/nginx/html \
+	--volume ~/Provision/nginx-shared/conf.d:/etc/nginx/conf.d \
 	--publish 80:80 \
-	--restart always \
-	--hostname www.boivert.ovh \
+	--hostname www \
 	nginx:stable
