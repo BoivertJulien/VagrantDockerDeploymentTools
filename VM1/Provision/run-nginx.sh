@@ -8,4 +8,5 @@ docker run \
 	--volume ~/Provision/nginx-shared/conf.d:/etc/nginx/conf.d \
 	--publish 80:80 \
 	--hostname www \
+	--restart always \
 	nginx:stable
