@@ -7,5 +7,6 @@ docker run \
 	--volume ~/Provision/nginx-shared/html:/usr/share/nginx/html \
 	--volume ~/Provision/nginx-shared/conf.d:/etc/nginx/conf.d \
 	--publish 80:80 \
+	--publish 8080:8080 \
 	--hostname www \
 	nginx:stable
