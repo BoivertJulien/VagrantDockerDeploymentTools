@@ -13,7 +13,7 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 sudo gpasswd -a vagrant docker
 
 ### Pull used images
-docker pull nginx:stable
+sudo docker pull nginx:stable
 #docker pull gitlab/gitlab-ce:latest
 
 ### Docker Compose Install
@@ -24,4 +24,4 @@ cd ~/Provision/nginx-shared/html/
 rm -rf *
 git clone https://github.com/BoivertJulien/WebPageTemplate .
 cd ~/Provision
-./run-nginx.sh
+sudo ./run-nginx.sh
