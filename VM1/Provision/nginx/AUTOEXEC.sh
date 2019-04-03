@@ -20,8 +20,8 @@ sudo docker pull nginx:stable
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-cd ~/Provision/nginx-shared/html/
+cd ~/Provision/nginx/nginx-shared/html/
 rm -rf *
 git clone https://github.com/BoivertJulien/WebPageTemplate .
-cd ~/Provision
-sudo ./run-nginx.sh
+cd ~/Provision/nginx
+sudo ./run.sh
