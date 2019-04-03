@@ -1,6 +1,5 @@
 #!/bin/bash
 
-### docker run --name my-nginx --mount source=~/my-nginx/html,target=/usr/share/nginx/html,readonly --mount source=~/my-nginx/conf,target=/etc/nginx/co$
 docker run \
 	--name nginx \
 	--detach \
@@ -8,5 +7,5 @@ docker run \
 	--volume ~/Provision/nginx/nginx-shared/conf.d:/etc/nginx/conf.d \
 	--publish 80:80 \
 	--hostname www \
+	--restart always \
 	nginx:stable
-	#--publish 8080:8080 \

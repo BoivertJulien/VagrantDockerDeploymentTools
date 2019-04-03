@@ -5,9 +5,12 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 1996
   config.vm.network "forwarded_port", guest: 8080, host: 2004
   config.vm.hostname = "VM1"
-  config.vm.provision "file", source: "Provision/nginx", destination:"/home/vagrant/"
+  config.vm.provision "file", source: "Provision", destination:"/home/vagrant/"
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-	  cd ~/Provision/nginx
+	  cd ~/Provision
     ./AUTOEXEC.sh
+
+    echo "you need to \"cd ~/Provision/nginx\" then \"sudo ./run.sh\""
+    echo "then do the same with wordpress but fill passwords in docker-compose file"
   SHELL
 end

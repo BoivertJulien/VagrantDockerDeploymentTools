@@ -12,16 +12,24 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 ### Add default user to docker group
 sudo gpasswd -a vagrant docker
 
-### Pull used images
-sudo docker pull nginx:stable
-#docker pull gitlab/gitlab-ce:latest
-
 ### Docker Compose Install
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+
+
+### Prepare NGINX env
+sudo docker pull nginx:stable
 
 cd ~/Provision/nginx/nginx-shared/html/
 rm -rf *
 git clone https://github.com/BoivertJulien/WebPageTemplate .
 cd ~/Provision/nginx
-sudo ./run.sh
+
+
+
+### Prepare WORDPRESS env
+sudo docker pull mysql:5.7
+sudo docker pull wordpress:latest
+
+#docker pull gitlab/gitlab-ce:latest
