@@ -19,17 +19,17 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 
 ### Prepare NGINX env
-sudo docker pull nginx:stable
+#sudo docker pull nginx:stable
 
-cd ~/Provision/nginx/nginx-shared/html/
-rm -rf *
-git clone https://github.com/BoivertJulien/WebPageTemplate .
-cd ~/Provision/nginx
+#cd ~/Provision/nginx/nginx-shared/html/
+#rm -rf *
+#git clone https://github.com/BoivertJulien/WebPageTemplate .
+#cd ~/Provision/nginx
 
 
 
 ### Prepare WORDPRESS env
-sudo docker pull mysql:5.7
-sudo docker pull wordpress:latest
+#sudo docker pull mysql:5.7
+#sudo docker pull wordpress:latest
 
 #docker pull gitlab/gitlab-ce:latest
