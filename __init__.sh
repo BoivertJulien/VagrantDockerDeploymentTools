@@ -7,8 +7,13 @@ su
 
 # 1st Parameter :
 
-# SSH Config File : "./my-sshd_config"
-# NGINX Config File : "./my-default.conf"
+# IPTABLES Config File : 
+iptablesRules="./res/iptables.rules.sh"
+# SSH Config File : 
+sshConfig="./res/sshd_config"
+
+# NGINX Config File : 
+nginxProxy="./res/default.conf"
 
 
 
@@ -17,19 +22,19 @@ su
 #	Install 'iptables'
 ###
 sudo apt install iptables -y --fix-missing
-sudo iptables 
+sudo $iptablesRules
 
 ###
 #	Install 'ssh'
 ###
 sudo apt install ssh -y --fix-missing
-sudo cp ./my-sshd_config /etc/ssh/sshd_config -f
+sudo cp $sshConfig /etc/ssh/sshd_config -f
 
 ###
 #	Install 'nginx'
 ###
 sudo apt install nginx -y --fix-missing
-sudo cp ./my-default.conf /etc/nginx/conf.d/default.conf -f
+sudo cp $nginxProxy /etc/nginx/conf.d/default.conf -f
 
 ###
 #	Install 'Virtualbox' + extpack
