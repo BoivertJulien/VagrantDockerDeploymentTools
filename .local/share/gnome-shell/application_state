@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="org.gnome.Nautilus.desktop" open-window-count="0" score="8" last-seen="1556717824"/>
+    <application id="org.gnome.Terminal.desktop" open-window-count="1" score="59" last-seen="1556717799"/>
+    <application id="gparted.desktop" open-window-count="0" score="35" last-seen="1556717747"/>
+  </context>
+</application-state>
