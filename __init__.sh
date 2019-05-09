@@ -1,9 +1,9 @@
 #!/bin/bash
 su
 
-###
-#	DEPENDANCIES
-###
+############################################################
+#	DEPENDANCIES 						####################
+############################################################
 
 # 1st Parameter :
 
@@ -16,7 +16,9 @@ sshConfig="./res/sshd_config"
 nginxProxy="./res/default.conf"
 
 
-
+############################################################
+#	Firewall + SSH 						####################
+############################################################
 
 ###
 #	Install 'iptables'
@@ -30,11 +32,20 @@ sudo $iptablesRules
 sudo apt install ssh -y --fix-missing
 sudo cp $sshConfig /etc/ssh/sshd_config -f
 
+############################################################
+#	Reverse Proxy 						####################
+############################################################
+
 ###
 #	Install 'nginx'
 ###
 sudo apt install nginx -y --fix-missing
 sudo cp $nginxProxy /etc/nginx/conf.d/default.conf -f
+
+
+############################################################
+#	Install 'Virtualbox' + extpack 		####################
+############################################################
 
 ###
 #	Install 'Virtualbox' + extpack
