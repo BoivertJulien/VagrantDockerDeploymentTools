@@ -1,0 +1,71 @@
+- name: Install and Setup Docker
+  gather_facts: no
+  hosts: VMs
+  become: true
+  tasks:
+
+  - name: Install Utilities
+    apt:
+      name:
+        - git
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg2
+        - software-properties-common
+      state: latest
+      update_cache: yes
+
+  # curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+  - name: get docker key
+    apt_key:
+      url: https://download.docker.com/linux/debian/gpg
+      state: present
+
+  # apt-key fingerprint 0EBFCD88
+  - name: verify docker key
+    apt_key:
+       id: 0EBFCD88
+       state: present
+
+  - shell: lsb_release -cs
+    register: lsb_release_cs
+
+  - name: add docker key
+    shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian {{ lsb_release_cs.stdout }} stable"
+
+  - name: Install Docker
+    apt:
+      name: 
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      state: latest
+      update_cache: yes
+
+  # sudo groupadd docker
+  - name: Create "docker" group
+    group:
+      name: "docker"
+      state: present
+ 
+  # sudo usermod -aG docker vagrant
+  - name: Add "vagrant" user to "docker" group
+    user:
+      name: "vagrant"
+      group: "docker"
+      append: yes
+
+  - shell: uname -s
+    register: uname_s
+
+  - shell: uname -m
+    register: uname_m
+
+  - name: Download docker-compose
+    get_url:
+      url: "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-{{ uname_s.stdout }}-{{ uname_m.stdout }}"
+      dest: /usr/local/bin/docker-compose
+      mode: "a+x"
+
+  

@@ -20,7 +20,7 @@ if [ "$answer" == "${answer#[Yy]}" ] ; then
   exit 1
 fi
 
-cd VM1
+cd VMs
 vagrant destroy -f
 echo "Moved to \"VM1/\", destroy VM and now making \"vagrant up\""
 vagrant up
