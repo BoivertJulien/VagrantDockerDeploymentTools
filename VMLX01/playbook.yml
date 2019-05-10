@@ -1,6 +1,6 @@
 - name: Install and Setup Docker
   gather_facts: no
-  hosts: VMs
+  hosts: VMLX01
   become: true
   tasks:
 

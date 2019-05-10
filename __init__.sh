@@ -1,19 +1,37 @@
 #!/bin/bash
-su
+
+CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+if [ ${CAN_I_RUN_SUDO} -eq 0 ]
+then
+    echo "PLEASE INSTALL SUDO BEFORE (eventually lock root account) :"
+    echo ""
+    echo "apt update"
+	echo "apt upgrade"
+	echo "apt dist-upgrade"
+    echo ""
+
+	echo "apt install sudo -y"
+	echo "usermod -a -G sudo $1"
+	echo "su $1"
+	echo "sudo passwd -l root"
+	echo ""
+
+	echo "[IF YOU LOCK ROOT ACCOUNT SOME ERRORS (such as bad fstab file) COULD LEAD TO BOOT FAILURE]"
+	echo "[ ( watch in 'tools' directory how to add second HDD in /etc/fstab mounted on '/' ) ]"
+
+    exit 1
+fi
 
 ############################################################
 #	DEPENDANCIES 						####################
 ############################################################
 
-# 1st Parameter :
-
 # IPTABLES Config File : 
-iptablesRules="./res/iptables.rules.sh"
+iptablesRules="./HostRessources/iptables.rules.sh"
 # SSH Config File : 
-sshConfig="./res/sshd_config"
-
+sshConfig="./HostRessources/sshd_config"
 # NGINX Config File : 
-nginxProxy="./res/default.conf"
+nginxProxy="./HostRessources/default.conf"
 
 
 ############################################################
