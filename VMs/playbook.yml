@@ -68,4 +68,18 @@
       dest: /usr/local/bin/docker-compose
       mode: "a+x"
 
-  
+  - name: Clone repository with docker-compose files
+    git:
+        repo: ""
+        accept_hostkey: yes
+        clone: yes
+        update: yes
+        force: yes
+        ssh_opts: -o ForwardAgent=yes 
+        dest: "/vagrant"
+      become_user: vagrant
+
+  - name: docker-compose up
+    shell: docker-compose up -d
+    args:
+        chdir: /vagrant
