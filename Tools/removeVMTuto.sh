@@ -5,3 +5,5 @@ echo ""
 echo "vagrant destroy -f"
 echo "cd .."
 echo "rm -r <box_dir>"
+
+exit 0

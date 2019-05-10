@@ -1,2 +1,0 @@
-# This file is gonna be erased, and git "https://github.com/BoivertJulien/WebPageTemplate" is going to be cloned here
-# This file seems necessary, because without file, directory "html" isn't imported during provisioning

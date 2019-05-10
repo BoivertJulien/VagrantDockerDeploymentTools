@@ -4,7 +4,7 @@ services:
    db:
      image: mysql:5.7
      volumes:
-       - db_data:/var/lib/mysql
+       - /home/vagrant/VOLUMES/WORDPRESS/DB:/var/lib/mysql
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: TO_CHANGE_IMMEDIATLY
@@ -24,5 +24,3 @@ services:
        WORDPRESS_DB_USER: TO_CHANGE
        WORDPRESS_DB_PASSWORD: TO_CHANGE
        WORDPRESS_DB_NAME: oOoOo
-volumes:
-    db_data: {}

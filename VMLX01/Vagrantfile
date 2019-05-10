@@ -9,14 +9,18 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8081, host: 2004
   config.vm.hostname = "VM1"
   config.vm.provision "file", source: "Provision", destination:"/home/vagrant/"
+  
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-	cd ~/Provision
-        # ./AUTOEXEC.sh
+      # cd ~/Provision
   SHELL
+
   config.vm.provision "ansible" do |ansible|
-    ansible.compatibility_mode = '2.0'
-    ansible.playbook = "playbook.yml"
-    ansible.extra_vars = {
-    }
+      ansible.compatibility_mode = '2.0'
+      ansible.playbook = "playbook.yml"
+      ansible.extra_vars = {
+        vagrant_directories_to_create : "~/VOLUMES/NGINX/HTML ~/VOLUMES/WORDPRESS/DB"
+      }
+
   end
 end
+ 

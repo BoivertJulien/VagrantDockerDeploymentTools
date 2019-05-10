@@ -68,18 +68,16 @@
       dest: /usr/local/bin/docker-compose
       mode: "a+x"
 
-  - name: Clone repository with docker-compose files
-    git:
-        repo: ""
-        accept_hostkey: yes
-        clone: yes
-        update: yes
-        force: yes
-        ssh_opts: -o ForwardAgent=yes 
-        dest: "/vagrant"
-      become_user: vagrant
+  - name: create directories dedicated to volumes
+    shell: mkdir ~/VOLUMES/NGINX/HTML ~/VOLUMES/WORDPRESS/DB
+    become_user: vagrant
 
-  - name: docker-compose up
+  - name: docker-compose nginx
     shell: docker-compose up -d
     args:
-        chdir: /vagrant
+        chdir: ~/Provision/nginx/
+  
+  - name: docker-compose wordpress
+    shell: docker-compose up -d
+    args:
+        chdir: ~/Provision/wordpress/

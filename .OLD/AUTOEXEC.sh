@@ -17,19 +17,16 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 
-
 ### Prepare NGINX env
-#sudo docker pull nginx:stable
+sudo docker pull nginx:stable
 
-#cd ~/Provision/nginx/nginx-shared/html/
-#rm -rf *
-#git clone https://github.com/BoivertJulien/WebPageTemplate .
-#cd ~/Provision/nginx
-
+cd ~/Provision/nginx/nginx-shared/html/
+rm -rf *
+git clone https://github.com/BoivertJulien/WebPageTemplate .
+cd ~/Provision/nginx
 
 
 ### Prepare WORDPRESS env
-#sudo docker pull mysql:5.7
-#sudo docker pull wordpress:latest
-
-#docker pull gitlab/gitlab-ce:latest
+docker pull mysql:5.7
+docker pull wordpress:latest
+docker pull gitlab/gitlab-ce:latest
