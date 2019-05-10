@@ -90,5 +90,5 @@ sudo apt-get install software-properties-common -y --fix-missing
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt-get install ansible -y --fix-missing
 
-echo "You host machine is ready..."
-echo "You can now go to VM folder, run 'vagrant up|ssh|destroy' :"
+echo "You host machine is ready... You need to start vagrant and ansible should do the job."
+echo "You can now go to VM folder and run 'vagrant up|ssh|destroy'"

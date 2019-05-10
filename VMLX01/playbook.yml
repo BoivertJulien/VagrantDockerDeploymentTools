@@ -69,7 +69,7 @@
       mode: "a+x"
 
   - name: create directories dedicated to volumes
-    shell: mkdir ~/VOLUMES/NGINX/HTML ~/VOLUMES/WORDPRESS/DB
+    shell: mkdir ~/VOLUMES/NGINX/HTML ~/VOLUMES/WORDPRESS/SQL-DB
     become_user: vagrant
 
   - name: docker-compose nginx
@@ -81,3 +81,14 @@
     shell: docker-compose up -d
     args:
         chdir: ~/Provision/wordpress/
+
+  - name: Clone repository with docker-compose files
+    git:
+       repo: "{{ MY_WEBSITE_GIT_URL }}"
+       accept_hostkey: yes
+       clone: yes
+       update: yes
+       force: yes
+       ssh_opts: -o ForwardAgent=yes 
+       dest: "~/VOLUMES/NGINX/HTML/"
+    become_user: vagrant
