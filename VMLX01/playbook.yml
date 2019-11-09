@@ -68,19 +68,29 @@
       dest: /usr/local/bin/docker-compose
       mode: "a+x"
 
-  - name: create directories dedicated to volumes
-    shell: mkdir ~/VOLUMES/NGINX/HTML ~/VOLUMES/WORDPRESS/SQL-DB
-    become_user: vagrant
+  - name: create directory if they don't exist
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: vagrant
+      group: vagrant
+      mode: 0775
+    with_items:
+      - /home/vagrant/VOLUMES/NGINX/HTML
+      - /home/vagrant/VOLUMES/WORDPRESS/SQL-DB
 
   - name: docker-compose nginx
     shell: docker-compose up -d
     args:
         chdir: ~/Provision/nginx/
+    become_user: vagrant
   
   - name: docker-compose wordpress
     shell: docker-compose up -d
     args:
         chdir: ~/Provision/wordpress/
+    become_user: vagrant
+
 
   - name: Clone repository with docker-compose files
     git:

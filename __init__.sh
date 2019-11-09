@@ -51,7 +51,7 @@ sudo apt install ssh -y --fix-missing
 sudo cp $sshConfig /etc/ssh/sshd_config -f
 
 ############################################################
-#	Reverse Proxy 						####################
+#	Reverse Proxy + net tools     	####################
 ############################################################
 
 ###
@@ -60,6 +60,10 @@ sudo cp $sshConfig /etc/ssh/sshd_config -f
 sudo apt install nginx -y --fix-missing
 sudo cp $nginxProxy /etc/nginx/conf.d/default.conf -f
 
+###
+#       Install 'net-tools'
+###
+sudo apt install net-tools -y --fix-missing
 
 ############################################################
 #	Install 'Virtualbox' + extpack 		####################
@@ -81,6 +85,7 @@ sudo VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-6.
 ###
 wget -q https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb
 sudo dpkg -i vagrant_2.2.4_x86_64.deb
+vagrant plugin install vagrant-vbguest
 
 ###
 #	Install 'ansible'
