@@ -11,8 +11,8 @@ then
     echo ""
 
 	echo "apt install sudo -y"
-	echo "usermod -a -G sudo $1"
-	echo "su $1"
+	echo "usermod -a -G sudo <username>"
+	echo "su <username>"
 	echo "sudo passwd -l root"
 	echo ""
 
